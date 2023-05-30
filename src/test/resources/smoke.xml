@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Use tests automation">
+    <parameter name="param1" value="Dmytro"></parameter>
+    <parameter name="param2" value="Bilyi"></parameter>
+    <parameter name="param3" value="63"></parameter>
+    <parameter name="param4" value="Olha"></parameter>
+    <parameter name="param5" value="Bilozerova"></parameter>
+    <parameter name="param6" value="61"></parameter>
+    <parameter name="param7" value="Bilozerova"></parameter>
+    <groups>
+        <run>
+            <include name="All"/>
+            <include name="Smoke"/>
+        </run>
+    </groups>
+
+    <test name="API regression">
+        <classes>
+            <class name="Tests.test1"/>
+            <class name="Tests.test2"/>
+        </classes>
+    </test>
+</suite>
