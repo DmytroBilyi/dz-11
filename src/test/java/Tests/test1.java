@@ -1,4 +1,5 @@
 package Tests;
+import dataproviders.TestDataProvider;
 import org.example.Man;
 import org.example.Person;
 import org.example.Woman;
@@ -6,26 +7,26 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class test1 {
-    @Test
-    public void testManRegisterPartnership() {
-        Man man = new Man("Dmytro", "Bilyi", 63);
-        Woman woman = new Woman("Olha", "Bilozerova", 61, "Bilozerova");
-        Assert.assertEquals(woman.registerPartnership(man),"Bilyi", "Прізвище після реєстрації браку у жінки " + man.registerPartnership(woman));
+    @Test(dataProvider = "numbers", dataProviderClass = TestDataProvider.class)
+    public void testManRegisterPartnership(String name1, String lastname1, int age1) {
+        Man man = new Man(name1, lastname1, age1);
+        Woman woman = new Woman(name1, lastname1, age1, "Bilozerova");
+        Assert.assertEquals(woman.registerPartnership(man),lastname1, "Прізвище після реєстрації браку у жінки " + man.registerPartnership(woman));
     }
-    @Test
-    public void testWomanRegisterPartnership() {
-        Man man = new Man("Dmytro", "Bilyi", 63);
-        Woman woman = new Woman("Olha", "Bilozerova", 61, "Bilozerova");
-        Assert.assertEquals(man.registerPartnership(woman),"Bilyi", "Прізвище після реєстрації браку у жінки " + man.registerPartnership(woman));
+    @Test(dataProvider = "numbers", dataProviderClass = TestDataProvider.class)
+    public void testWomanRegisterPartnership(String name1, String lastname1, int age1) {
+        Man man = new Man(name1, lastname1, age1);
+        Woman woman = new Woman(name1, lastname1, age1, "Bilozerova");
+        Assert.assertEquals(man.registerPartnership(woman),lastname1, "Прізвище після реєстрації браку у жінки " + man.registerPartnership(woman));
     }
-    @Test
-    public void testDeregisterPartnership() {
-        Woman woman = new Woman("Olha", "Bilozerova", 61, "Bilozerova");
+    @Test(dataProvider = "numbers", dataProviderClass = TestDataProvider.class)
+    public void testDeregisterPartnership(String name1, String lastname1, int age1) {
+        Woman woman = new Woman(name1, lastname1, age1, "Bilozerova");
         Assert.assertEquals(woman.deregisterPartnership(true), true, "Данні жінки після розлучення - " + woman.toString());
     }
-    @Test
-    public void testManIsRetired() {
-        Man man = new Man("Dmytro", "Bilyi", 63);
+    @Test(dataProvider = "numbers", dataProviderClass = TestDataProvider.class)
+    public void testManIsRetired(String name1, String lastname1, int age1) {
+        Man man = new Man(name1, lastname1, age1);
         Assert.assertEquals(man.isRetired(), false, "Вік у чоловіка більший пенсійного порогу!");
     }
     @Test
