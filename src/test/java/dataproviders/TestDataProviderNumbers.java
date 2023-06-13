@@ -10,6 +10,9 @@ public class TestDataProviderNumbers {
     @CsvBindByName(column = "age1")
     private int age1;
 
+    public TestDataProviderNumbers(String name1, String lastname1, int age1) {
+    }
+
     public String getName1() {
         return name1;
     }
